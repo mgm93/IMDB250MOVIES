@@ -9,7 +9,14 @@
         android:id="@+id/splashFragment"
         android:name="com.mgm.imdb250movies.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/actionSplashToRegister"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/actionSplashToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.mgm.imdb250movies.ui.register.RegisterFragment"

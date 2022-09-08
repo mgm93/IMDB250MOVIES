@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mgm.imdb250movies">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"

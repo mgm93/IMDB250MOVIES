@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--    Image-->
+    <!--    shaddow-->
+    <ImageView
+        android:id="@+id/imgCover"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300mdp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:src="@tools:sample/backgrounds/scenic" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150mdp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCover" />
+    <!--    Name-->
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10mdp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14font_mdp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/txtInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <!--    Info-->
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10mdp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/philippineSilver"
+        android:textSize="@dimen/_12font_mdp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/imgCover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:drawableStartCompat="@drawable/ic_round_star_24"
+        app:drawableTint="@color/crayola" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

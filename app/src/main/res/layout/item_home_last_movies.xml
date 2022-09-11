@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--poster-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPoster"
+        android:layout_width="@dimen/_120mdp"
+        android:layout_height="@dimen/_140mdp"
+        android:layout_margin="@dimen/_5mdp"
+        app:cardCornerRadius="@dimen/_5mdp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--Image poster-->
+        <ImageView
+            android:id="@+id/imgPoster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/backgrounds/scenic" />
+    </androidx.cardview.widget.CardView>
+    <!--name-->
+    <TextView
+        android:id="@+id/txtName"
+        style="@style/TextViewLightStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12font_mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/name" />
+    <!--genres-->
+    <TextView
+        android:id="@+id/txtRate"
+        style="@style/TextViewLightStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/_10font_mdp"
+        app:drawableStartCompat="@drawable/ic_round_star_24"
+        app:drawableTint="@color/philippineSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintTop_toBottomOf="@id/txtName"
+        tools:text="@string/moreInfo" />
+    <!--Country-->
+    <TextView
+        android:id="@+id/txtCountry"
+        style="@style/TextViewLightStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/_10font_mdp"
+        app:drawableStartCompat="@drawable/ic_round_language_24"
+        app:drawableTint="@color/philippineSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintTop_toBottomOf="@id/txtRate"
+        tools:text="@string/moreInfo" />
+
+    <!--Year-->
+    <TextView
+        android:id="@+id/txtYear"
+        style="@style/TextViewLightStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/_10font_mdp"
+        app:drawableStartCompat="@drawable/ic_round_calendar_today_24"
+        app:drawableTint="@color/philippineSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintTop_toBottomOf="@id/txtCountry"
+        tools:text="@string/moreInfo" />
+    <!--moreInfo-->
+    <TextView
+        android:id="@+id/txtMore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_20mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/moreInfo"
+        android:textColor="@color/scarlet"
+        android:textSize="@dimen/_10font_mdp"
+        app:drawableEndCompat="@drawable/ic_round_chevron_right_24"
+        app:drawableTint="@color/scarlet"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintTop_toBottomOf="@id/txtYear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

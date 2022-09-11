@@ -1,13 +1,11 @@
 package com.mgm.imdb250movies.api
 
+import com.mgm.imdb250movies.models.home.ResponseGenresList
 import com.mgm.imdb250movies.models.home.ResponseMoviesList
 import com.mgm.imdb250movies.models.register.BodyRegister
 import com.mgm.imdb250movies.models.register.ResponseRegister
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /**
  * Created by Majid-Golmoradi on 9/6/2022.
@@ -19,4 +17,14 @@ interface ApiService {
 
     @GET("genres/{genre_id}/movies")
     suspend fun getTopMovies(@Path("genre_id") genreId:Int): Response<ResponseMoviesList>
+
+    @GET("genres")
+    suspend fun getGenresList(): Response<ResponseGenresList>
+
+    @GET("movies")
+    suspend fun getLastMovies(): Response<ResponseMoviesList>
+
+    @GET("movies")
+    suspend fun searchMovies(@Query("q") name:String): Response<ResponseMoviesList>
+
 }

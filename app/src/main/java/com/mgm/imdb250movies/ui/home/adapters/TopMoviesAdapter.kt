@@ -30,7 +30,7 @@ class TopMoviesAdapter @Inject constructor() : RecyclerView.Adapter<TopMoviesAda
         holder.setIsRecyclable(false)
     }
 
-    override fun getItemCount() = 5
+    override fun getItemCount() = if (differ.currentList.size> 5) 5 else differ.currentList.size
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")

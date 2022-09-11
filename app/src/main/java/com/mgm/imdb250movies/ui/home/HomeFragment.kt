@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.GeneratedAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.mgm.imdb250movies.databinding.FragmentHomeBinding
+import com.mgm.imdb250movies.databinding.ItemHomeLastMoviesBinding
+import com.mgm.imdb250movies.ui.home.adapters.GenresListAdapter
+import com.mgm.imdb250movies.ui.home.adapters.LastMoviesAdapter
 import com.mgm.imdb250movies.ui.home.adapters.TopMoviesAdapter
 import com.mgm.imdb250movies.utils.initRecycler
+import com.mgm.imdb250movies.utils.showInvisible
 import com.mgm.imdb250movies.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -22,6 +27,13 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var topMoviesAdapter: TopMoviesAdapter
+
+    @Inject
+    lateinit var genresListAdapter: GenresListAdapter
+
+    @Inject
+    lateinit var lastMovieAdapter: LastMoviesAdapter
+
     //Other
     private val viewModel: HomeViewModel by viewModels()
     private val pagerSnapHelper :PagerSnapHelper by lazy { PagerSnapHelper() }
@@ -35,7 +47,9 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Call Get top movies list
-        viewModel.callTopMovies(3)
+        viewModel.loadTopMovies(1)
+        viewModel.loadGenres()
+        viewModel.loadLastMovies()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,6 +68,38 @@ class HomeFragment : Fragment() {
                 //PagerHelper
                 pagerSnapHelper.attachToRecyclerView(recyclerTopMovies)
                 topMoviesIndicator.attachToRecyclerView(recyclerTopMovies, pagerSnapHelper)
+            }
+
+            //Get Genres
+            viewModel.genresList.observe(viewLifecycleOwner){
+                //setList in topMoviesAdapter
+                genresListAdapter.differ.submitList(it)
+                //Top Movies Recycler
+                recyclerGenres.initRecycler(
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                    ,genresListAdapter
+                )
+            }
+
+            //Get Last Movies
+            viewModel.lastMoviesList.observe(viewLifecycleOwner){
+                //setList in topMoviesAdapter
+                lastMovieAdapter.setData(it.data)
+                //Top Movies Recycler
+                recyclerLastMovies.initRecycler(
+                    LinearLayoutManager(context)
+                    ,lastMovieAdapter
+                )
+            }
+
+            viewModel.loading.observe(viewLifecycleOwner){
+                if (it){
+                    loading.showInvisible(true)
+                    nested.showInvisible(false)
+                }else{
+                    loading.showInvisible(false)
+                    nested.showInvisible(true)
+                }
             }
         }
     }

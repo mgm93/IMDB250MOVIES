@@ -26,4 +26,9 @@
         <item name="boxBackgroundColor">@color/gunmetal</item>
         <item name="startIconTint">@color/philippineSilver</item>
     </style>
+    <!--Round shape  imageview-->
+    <style name="RoundShapeImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_25mdp</item>
+    </style>
 </resources>

@@ -50,8 +50,20 @@ class LastMoviesAdapter @Inject constructor() :
                 txtRate.text = item.imdbRating
                 txtCountry.text = item.country
                 txtYear.text = item.year
+                //click
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
             }
         }
+    }
+    //onClick
+    private var onItemClickListener : ((Data) -> Unit)? = null
+
+    fun setOmItemClickListener(listener: (Data) -> Unit){
+        onItemClickListener = listener
     }
 
     fun setData(newItem: List<Data>){

@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mgm.imdb250movies.R
 import com.mgm.imdb250movies.databinding.FragmentSearchBinding
+import com.mgm.imdb250movies.ui.home.HomeFragmentDirections
 import com.mgm.imdb250movies.ui.home.adapters.LastMoviesAdapter
 import com.mgm.imdb250movies.ui.home.adapters.TopMoviesAdapter
 import com.mgm.imdb250movies.utils.initRecycler
@@ -50,6 +52,11 @@ class SearchFragment : Fragment() {
             viewModel.response.observe(viewLifecycleOwner){
                 lastMoviesAdapter.setData(it.data)
                 searchRecycler.initRecycler(LinearLayoutManager(requireContext()),lastMoviesAdapter)
+            }
+            //Click
+            lastMoviesAdapter.setOmItemClickListener {
+                val direction  = HomeFragmentDirections.actionToDetail(it.id!!.toInt())
+                findNavController().navigate(direction)
             }
             //Loading
             viewModel.loading.observe(viewLifecycleOwner){

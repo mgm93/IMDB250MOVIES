@@ -1,5 +1,6 @@
 package com.mgm.imdb250movies.api
 
+import com.mgm.imdb250movies.models.detail.ResponseDetailMovie
 import com.mgm.imdb250movies.models.home.ResponseGenresList
 import com.mgm.imdb250movies.models.home.ResponseMoviesList
 import com.mgm.imdb250movies.models.register.BodyRegister
@@ -26,5 +27,8 @@ interface ApiService {
 
     @GET("movies")
     suspend fun searchMovies(@Query("q") name:String): Response<ResponseMoviesList>
+
+    @GET("movies/{movie_id}")
+    suspend fun detailMovie(@Path("movie_id") id:Int): Response<ResponseDetailMovie>
 
 }

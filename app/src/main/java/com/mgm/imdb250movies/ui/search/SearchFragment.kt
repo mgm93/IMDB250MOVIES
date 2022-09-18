@@ -42,6 +42,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //InitViews
         binding.apply {
+            //Search box
             edtSearch.addTextChangedListener {
                 it.let {
                     //call search
